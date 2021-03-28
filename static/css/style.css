@@ -1,0 +1,133 @@
+body {
+  		background: #FDFDFD;
+			font-family: "Segoe WP","Segoe UI", Helvetica, Arial, sans-serif;
+			text-align:center;
+		}
+		h1, h2 {
+			color: #888;
+			margin:0;
+			font-weight:normal;
+		}
+		h1{ padding-top: 1.5em; padding-bottom: 2em; }
+		h2 {
+			clear:both;
+			color: #aaa;
+			padding: 2em 0 0.3em
+		}
+		em {
+			display: block;
+			margin: .5em auto 2em;
+			color: #bbb;
+		}
+
+		p, p a {
+			color: #aaa;
+			text-decoration: none;
+		}
+		p a:hover,
+		p a:focus {
+			text-decoration: underline;
+		}
+		p + p { color: #bbb; margin-top: 2em;}
+		.detail {position: absolute; text-align: right; right: 5px; bottom: 5px; width: 50%;}
+
+		a[href*="intent"] {
+			display:inline-block;
+			margin-top: 0.4em;
+		}
+
+		/*
+		 * Rating styles
+		 */
+		.rating {
+			width: 226px;
+			margin: 0 auto 1em;
+			font-size: 45px;
+			overflow:hidden;
+		}
+.rating input {
+  float: right;
+  opacity: 0;
+  position: absolute;
+}
+		.rating a,
+    .rating label {
+			float:right;
+			color: #aaa;
+			text-decoration: none;
+			-webkit-transition: color .4s;
+			-moz-transition: color .4s;
+			-o-transition: color .4s;
+			transition: color .4s;
+		}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover,
+		.rating a:hover,
+		.rating a:hover ~ a,
+		.rating a:focus,
+		.rating a:focus ~ a		{
+			color: orange;
+			cursor: pointer;
+		}
+		.rating2 {
+			direction: rtl;
+		}
+		.rating2 a {
+			float:none
+		}
+
+
+
+fieldset {
+	border: 0;
+	margin: 2rem 0;
+}
+
+fieldset legend {
+	font-weight: 700;
+}
+
+.answer__item {
+    background-color: #f6f6f6;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    padding: 0.75rem 1.25rem;
+	 margin: 0.25rem 0;
+}
+
+/* Hide Radio Buttons and Submit Button */
+input[type="radio"], button {
+  display: none;
+}
+
+/* Any correct answer on any answered question, highlight in light green */
+:valid .answer__item--is-correct { background-color: rgba(61, 181, 64, 0.6) }
+
+/* Show any extra explanatory text */
+.answer__reveal-text { display: none; }
+:valid .answer__reveal-text { display: block }
+
+/* Any chosen answer, highlight in red */
+:checked + .answer__item { color: #ffffff; background-color: #c70000 }
+
+/* Any correctly chosen answer, highlight in bright green */
+:checked + .answer__item--is-correct { background-color: #3db540; }
+
+/* Show the icon for the selected answer */
+:checked + .answer__item .answer__icon { display: inline-block }
+
+
+/* prevent chosing another answer once chosen */
+:valid { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none }
+:valid + .answer__item { pointer-events: none }
+
+/* keep track of score */
+form { counter-reset: quiz-score }
+:checked + .answer__item--is-correct { counter-increment: quiz-score }
+.score:after { content: counter(quiz-score) "/" attr(data-question-count) }
+
+/* show score once quiz has been completed */
+.message { display: none; }
+form:valid .message { display: block }
