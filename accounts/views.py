@@ -15,7 +15,7 @@ def register(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
-        password = request.POST['password']
+        password = request.POST['pass']
         username = request.POST['username']
         if User.objects.filter(email=email).exists():
             messages.info(request, 'Email Taken')
