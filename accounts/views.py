@@ -5,7 +5,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 
 # Create your views here.
-from accounts.models import Project
+from projects.models import Project
 from init_test.models import student_score
 from subjects.models import suggested_subject, subject
 
@@ -126,10 +126,10 @@ def submitproject(request):
         if request.POST.get('field5'):
             skills[4] = request.POST.get('field5')
 
-            projects = Project.objects.create(student_id=user_id, project_name=project_name,
+        projects = Project.objects.create(student_id=user_id, project_name=project_name,
                                               project_description=project_description, project_role=role,
                                               skills_used1=skills[0], skills_used2=skills[1], skills_used3=skills[2],
                                               skills_used4=skills[3], skills_used5=skills[4])
-            projects.save()
+        projects.save()
 
         return redirect('dashboard')

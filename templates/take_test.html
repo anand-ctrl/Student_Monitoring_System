@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,12 +8,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudfare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+    <style>
+        .submit_ans{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 {% if user.is_authenticated %}
-<h3>Hi, {{ user.first_name }} take your Test</h3>
-    <form action="{% url 'take_test' %}" method="post">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+        <a href="/"><img src="{% static 'images/batman.png' %}" width="50" height="50" style="margin-left: 30px"></a>
+        <h3 style="font-family: 'Brush Script MT'; margin-left: 30px ; color: #fff3cd">S.M.S</h3>
+
+        <a title="Github Link" href="https://github.com/anand-ctrl/Student_Monitoring_System.git" style="margin-left: 1100px"><img src="{% static 'images/github.png' %}" height="30" width="30"></a>
+    </nav>
+<h3 style="margin-left: 10px; padding-top: 70px" >Hi, {{ user.first_name }} take your Test</h3>
+    <h5 style="margin-left: 10px"><b>Instructions:</b></h5>
+    <h6 style="margin-left: 10px">1. Attempt all questions.</h6>
+    <h6 style="margin-left: 10px">2. On a scale of 1 to 4, answer these questions where:</h6>
+    <h6 style="margin-left: 20px">i. 1-Disagree</h6>
+    <h6 style="margin-left: 20px">ii. 2-Somewhat</h6>
+    <h6 style="margin-left: 20px">iii. 3-Agree</h6>
+    <h6 style="margin-left: 20px">iv. 4-Strongly Agree</h6>
+
+    <form action="{% url 'take_test' %}" method="post" style="margin-left: 20px">
         {% csrf_token %}
         {% for i in exam %}
             <hr>
@@ -31,7 +52,11 @@
             {% endif %}
 
         {% endfor %}
-    <input type="submit" value="Submit Answers">
+    <br>
+    <div class="submit_ans">
+        <input  type="submit" value="Submit Answers">
+    </div>
+
 
     </form>
 {% else %}
