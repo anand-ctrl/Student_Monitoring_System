@@ -125,6 +125,8 @@ def submitproject(request):
             skills[3] = request.POST.get('field4')
         if request.POST.get('field5'):
             skills[4] = request.POST.get('field5')
+            # import pdb
+            # pdb.set_trace()
 
         projects = Project.objects.create(student_id=user_id, project_name=project_name,
                                               project_description=project_description, project_role=role,
