@@ -9,3 +9,11 @@ from django.contrib import admin
 #
 #
 # admin.site.register(Project, ProjectAdmin)
+from accounts.models import feedback
+
+
+class FeedbackAdmin(admin.ModelAdmin):
+    list_display = ('name', 'rating', 'comment')
+
+
+admin.site.register(feedback, FeedbackAdmin)
