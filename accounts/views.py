@@ -5,6 +5,8 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 
 # Create your views here.
+from accounts.forms import FeedbackForm
+from accounts.models import feedback
 from projects.models import Project
 from init_test.models import student_score
 from subjects.models import suggested_subject, subject
@@ -129,9 +131,29 @@ def submitproject(request):
             # pdb.set_trace()
 
         projects = Project.objects.create(student_id=user_id, project_name=project_name,
-                                              project_description=project_description, project_role=role,
-                                              skills_used1=skills[0], skills_used2=skills[1], skills_used3=skills[2],
-                                              skills_used4=skills[3], skills_used5=skills[4])
+                                          project_description=project_description, project_role=role,
+                                          skills_used1=skills[0], skills_used2=skills[1], skills_used3=skills[2],
+                                          skills_used4=skills[3], skills_used5=skills[4])
         projects.save()
 
         return redirect('dashboard')
+
+
+def feed(request):
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            # import pdb
+            # pdb.set_trace()
+            name = request.POST.get('name')
+            rating = int(request.POST.get('rating'))
+            comment = request.POST.get('comment')
+            feedbacks = feedback.objects.create(name=name, rating=rating, comment=comment)
+            feedbacks.save()
+            return redirect('/')
+        else:
+            return redirect('/')
+
+    else:
+        form = FeedbackForm()
+        return render(request, "feedback.html", {'form': form})

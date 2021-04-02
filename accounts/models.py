@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User, auth
 
+
 #  Create your models here.
 
 
@@ -15,3 +16,11 @@ from django.contrib.auth.models import User, auth
 #     skills_used4 = models.CharField(max_length=500, blank=True)
 #     skills_used5 = models.CharField(max_length=500, blank=True)
 
+
+class feedback(models.Model):
+    name = models.CharField(max_length=200)
+    rating = models.IntegerField()
+    comment = models.CharField(max_length=500, blank=True)
+
+    def __str__(self):
+        return self.name
