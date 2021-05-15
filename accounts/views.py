@@ -9,6 +9,7 @@ from accounts.forms import FeedbackForm
 from accounts.models import feedback
 from projects.models import Project
 from init_test.models import student_score
+from student.models import Student_Report
 from subjects.models import suggested_subject, subject
 
 
@@ -157,3 +158,58 @@ def feed(request):
     else:
         form = FeedbackForm()
         return render(request, "feedback.html", {'form': form})
+
+
+def academics(request):
+    subject_dict = {1: 'Environmental Engineering', 2: 'Electro-Magnetic Field Theory', 3: 'Accounting',
+                    4: 'Engineering Drawing', 5: 'Machine Learning', 6: 'Statistics', 7: 'Ethics',
+                    8: 'Data Structure & Algorithms', 9: 'Network Theory'}
+    user_id = request.user.id
+    if request.method == "POST":
+        sem = int(request.POST.get('sem'))
+        subjects = request.POST.getlist('your_role')
+        subject_marks_info = request.POST.getlist('fname')
+
+        subject_marks = {subject_dict[int(subjects[0])]: int(subject_marks_info[0]),
+                         subject_dict[int(subjects[1])]: int(subject_marks_info[1]),
+                         subject_dict[int(subjects[2])]: int(subject_marks_info[2]),
+                         subject_dict[int(subjects[3])]: int(subject_marks_info[3]),
+                         }
+
+        # calculate semester marks
+        semester_marks = {sem: int(subject_marks_info[0]) + int(subject_marks_info[1]) + int(subject_marks_info[2]) + \
+                               int(subject_marks_info[3])}
+
+        if not Student_Report.objects.filter(student_id=user_id).exists():
+            student = Student_Report.objects.create(student_id=user_id, subject_marks={sem: subject_marks},
+                                                    semester_marks=semester_marks)
+            student.save()
+            return redirect('dashboard')
+
+        else:
+            # import pdb
+            # pdb.set_trace()
+            all_data = Student_Report.objects.filter(student_id=user_id).values().get()
+
+            # whether same sem
+
+            all_sem = list(all_data['subject_marks'].keys())
+            for i in all_sem:
+                if i == str(sem):
+                    all_data['subject_marks'][i] = subject_marks
+                    all_data['semester_marks'][i] = semester_marks[sem]
+
+                    Student_Report.objects.update(subject_marks=all_data['subject_marks'],
+                                                  semester_marks=all_data['semester_marks'])
+                    # student.save()
+                    return redirect('dashboard')
+            else:
+
+                new_subject_marks = all_data['subject_marks']
+                new_subject_marks[str(sem)] = subject_marks
+                new_sem_marks = all_data['semester_marks']
+                new_sem_marks[str(sem)] = semester_marks[sem]
+                Student_Report.objects.update(subject_marks=new_subject_marks, semester_marks=new_sem_marks)
+                return redirect('dashboard')
+    else:
+        return render(request, 'academics.html')

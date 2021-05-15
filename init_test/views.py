@@ -156,10 +156,16 @@ def take_test(request):
                 global_map[subject.objects.filter(id=i).values()[0]['subject_name']] = counter1
             global_map = dict(sorted(global_map.items(), key=operator.itemgetter(1)))
 
-            print(global_map)
-            my_string = list(global_map)[-1]
-            print(my_string)
-            print(type(my_string))
+            # print(global_map)
+            # my_string = list(global_map)[-1]
+            # print(my_string)
+            # print(type(my_string))
+
+            global_arr = list(global_map.keys())
+            global_arr.reverse()
+
+            print(global_arr[:4])
+            my_string = {'suggested_subjects': global_arr[:4]}
 
             if not suggested_subject.objects.filter(student_id=user_id).exists():
                 new_data = suggested_subject.objects.create(student_id=user_id, suggested_subjects=my_string)
@@ -214,10 +220,16 @@ def take_test(request):
 
             global_map = dict(sorted(global_map.items(), key=operator.itemgetter(1)))
 
-            print(global_map)
-            my_string = list(global_map)[-1]
-            print(my_string)
-            print(type(my_string))
+            # print(global_map)
+            # my_string = list(global_map)[-1]
+            # print(my_string)
+            # print(type(my_string))
+
+            global_arr = list(global_map.keys())
+            global_arr.reverse()
+
+            print(global_arr[:4])
+            my_string = {'suggested_subjects': global_arr[:4]}
 
             if not suggested_subject.objects.filter(student_id=user_id).exists():
                 new_data = suggested_subject.objects.create(student_id=user_id, suggested_subjects=my_string)

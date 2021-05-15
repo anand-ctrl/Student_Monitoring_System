@@ -33,4 +33,4 @@ class subject(models.Model):
 
 class suggested_subject(models.Model):
     student = models.ForeignKey(User, on_delete=models.CASCADE)
-    suggested_subjects = models.CharField(max_length=500)
+    suggested_subjects = models.JSONField()

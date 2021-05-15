@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academics Record Add/Update</title>
+    <link rel="icon" href="{% static 'images/batman.png' %}">
+ <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+ <script src="https://kit.fontawesome.com/6b9038752c.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+<body>
+
+  <div id="myDIV" style="align-content: center;">
+   <form action="{% url 'academics' %}" method="post">
+        {% csrf_token %}
+
+       <p>Choose your semester</p>
+
+       <label>
+           <input type="text" ID="sem" name="sem">
+       </label>
+
+
+            <p> <b>Choose Subject: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marks:</b></p>
+
+
+       <label for="your_role"></label><select id="your_role" name="your_role" required>
+
+
+
+                    <option selected>Choose...</option>
+                     <option value="1">Environmental Engineering</option>
+                     <option value="2">Electro-Magnetic Field Theory</option>
+                     <option value="3">Accounting</option>
+                     <option value="4">Engineering Drawing</option>
+                     <option value="5">Machine Learning</option>
+                      <option value="6">Statistics</option>
+                       <option value="7">Ethics</option>
+                        <option value="8">Data Structure & Algorithms</option>
+                        <option value="9">Network Theory</option>
+            </select>
+
+       <label for="fname"></label><input type="text" id="fname" name="fname"><br>
+
+            <select id="your_role" name="your_role" required>
+                    <option selected>Choose...</option>
+                     <option value="1">Environmental Engineering</option>
+                     <option value="2">Electro-Magnetic Field Theory</option>
+                     <option value="3">Accounting</option>
+                     <option value="4">Engineering Drawing</option>
+                     <option value="5">Machine Learning</option>
+                      <option value="6">Statistics</option>
+                       <option value="7">Ethics</option>
+                        <option value="8">Data Structure Algorithms</option>
+                        <option value="9">Network Theory</option>
+            </select>
+
+  <input type="text" id="fname" name="fname"><br>
+
+            <select id="your_role" name="your_role" required>
+                    <option selected>Choose...</option>
+                     <option value="1">Environmental Engineering</option>
+                     <option value="2">Electro-Magnetic Field Theory</option>
+                     <option value="3">Accounting</option>
+                     <option value="4">Engineering Drawing</option>
+                     <option value="5">Machine Learning</option>
+                      <option value="6">Statistics</option>
+                       <option value="7">Ethics</option>
+                        <option value="8">Data Structure Algorithms</option>
+                        <option value="9">Network Theory</option>
+            </select>
+
+  <input type="text" id="fname" name="fname"><br>
+
+            <select id="your_role" name="your_role" required>
+                     <option selected>Choose...</option>
+                     <option value="1">Environmental Engineering</option>
+                     <option value="2">Electro-Magnetic Field Theory</option>
+                     <option value="3">Accounting</option>
+                     <option value="4">Engineering Drawing</option>
+                     <option value="5">Machine Learning</option>
+                      <option value="6">Statistics</option>
+                       <option value="7">Ethics</option>
+                        <option value="8">Data Structure Algorithms</option>
+                        <option value="9">Network Theory</option>
+            </select>
+
+  <input type="text" id="fname" name="fname"><br>
+            <br>
+        <input type="submit" value="Submit">
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
