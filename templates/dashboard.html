@@ -25,8 +25,21 @@
   border: 2px outset dimgrey;
   background-color: whitesmoke;
         margin: 20px;
-
 }
+#dtVerticalScrollExample
+{
+  position:absolute;
+  top:120px;
+  right:10px;
+}
+.acad
+{
+    position:absolute;
+  top:90px;
+  right:100px;
+}
+
+
 </style>
 
 
@@ -77,18 +90,18 @@
     {% if user.is_authenticated %}
         <div class="container" style="float: left; padding-top: 90px" >
     <h1>Hi, {{ user.first_name }} Welcome to your Dashboard </h1>
-        <button type="button" class="btn btn-primary"><a style="color: #fff3cd" href="/init_test/take_test">Take Test</a></button>
-{#    <button><a href="/accounts/logout">Logout</a></button>#}
-        <br>
-        <br>
+        <div class="tab">
 
-  <button class="btn btn-primary"  onclick="myFunction()" type="button" >Add Project</button>
-{#        <button type="button" class="btn btn-primary btn-lg" onclick="myFunction()">Add Project</button>#}
+            <button type="button" class="btn btn-primary"><a style="color: #fff3cd" href="/init_test/take_test">Take Test</a></button>
+            <button class="btn btn-primary"  onclick="myFunction()" type="button" >Add Project</button>
+            <button type="button" class="btn btn-primary"><a style="color: #fff3cd" href="/accounts/academics">Add/Update Academic Record</a></button>
 
-
+        {#        <button type="button" class="btn btn-primary btn-lg" onclick="myFunction()">Add Project</button>#}
 
 
-<div id="myDIV" style="align-content: center;display: none">
+
+
+<div id="myDIV" style="align-content: center;display: none; width: 800px">
 <form action="{% url 'submitproject' %}" method="post">
         {% csrf_token %}
         <div class="form-group">
@@ -135,8 +148,8 @@
         <input type="submit" value="Submit">
         </form>
 </div>
-        <h4>{{ user.first_name }} please add/update your academics record!</h4>
-        <button type="button" class="btn btn-primary"><a style="color: #fff3cd" href="/accounts/academics">Add/Update</a></button>
+
+
 
 
 
@@ -148,34 +161,96 @@
     <button><a href="/accounts/login">Login</a></button>
     {% endif %}
 
+
+<div>
     {% if subject %}
         <br>
         <br>
-        <h3><b>Here is the list of the suggested subjects based on your Initial Test:</b></h3>
-        <ol type="1">
-        {% for i in subject %}
+        <h5><b>Here is the list of the suggested subjects based on your Initial Test:</b></h5>
+{#        <ol type="1">#}
+{#        {% for i in subject %}#}
+{##}
+{#            <li>{{ i }}</li>#}
+{##}
+{##}
+{#        {% endfor %}#}
+{#         </ol>#}
 
-            <li>{{ i }}</li>
+
+        <table  class="table table-bordered table-sm table-striped" style="width:300px; border: 1px solid black" >
+        <thead class="thead-dark">
+            <tr>
+                <th>S No.</th>
+                <th>Suggested Subjects</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in subject %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i }}</td>
+
+                </tr>
+            {% endfor %}
+    </tbody>
 
 
-        {% endfor %}
-         </ol>
+
+    </table>
 
 
     {% endif %}
+
+<br>
+
+    {% if subject_scores %}
+
+        <div class="acad"> <h5> <b> Here are your Academics details:</b></h5></div>
+<div class="col-xs-offset-9 col-xs-3" >
+    <table id="dtVerticalScrollExample" class="table table-hover " style="width:400px; border: 1px solid black" >
+        <thead class="thead-dark">
+            <tr>
+                <th>S No.</th>
+                <th>Subjects</th>
+                <th>Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in subject_scores.items %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+            {% endfor %}
+    </tbody>
+
+
+
+    </table>
+</div>
+
+
+
+
+    {% endif %}
+
+
+
+
     <footer class="content" style="margin-left: 180px; margin-top: 200px">
     <div class="container py-5">
       <div class="row py-4">
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
           <p class="font-italic text-muted">SMS allows educational institutions to monitor,
 visualize, and analyze the efficiency of education with ease.</p>
-{#          <ul class="list-inline mt-4">#}
-{#            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>#}
-{#            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>#}
-{#            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>#}
-{#            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>#}
-{#            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>#}
-{#          </ul>#}
+          <ul class="list-inline mt-4">
+            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
+          </ul>
         </div>
         <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
           <h6 class="text-uppercase font-weight-bold mb-4">REQUIRED TECHNOLOGIES</h6>

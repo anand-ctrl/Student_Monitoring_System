@@ -3,23 +3,64 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Academics Record Add/Update</title>
     <link rel="icon" href="{% static 'images/batman.png' %}">
- <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
- <script src="https://kit.fontawesome.com/6b9038752c.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
 
+</style>
 </head>
 <body>
 
-  <div id="myDIV" style="align-content: center;">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+{#  <a class="navbar-brand" href="#"></a>#}
+{#  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">#}
+{#    <span class="navbar-toggler-icon"></span>#}
+{#  </button>#}
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+        <li><a href="/"><img src="{% static 'images/batman.png' %}" width="50" height="50" style="margin-left: 30px"></a>
+
+        </li>
+        <h3 style="font-family: 'Brush Script MT'; margin-left: 30px ; color: #fff3cd; margin-top: 4px" >S.M.S</h3>
+{#      <li class="nav-item active">#}
+{#        <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="#"></a>#}
+{#      </li>#}
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="#"></a>#}
+{#      </li>#}
+    </ul>
+    <span class="navbar-text">
+       <a class="navbar-right" title="Logout" href="/accounts/logout" ><b>Logout</b> </a>
+    </span>
+
+  </div>
+</nav>
+{% if user.is_authenticated %}
+        <div class="container" style="float: left; padding-top: 90px" >
+    <h2>Hi, {{ user.first_name }} Welcome to Academics Page </h2>
+            {% endif %}
+
+  <div id="myDIV" style="align-content: center;" >
+
    <form action="{% url 'academics' %}" method="post">
         {% csrf_token %}
 
-       <p>Choose your semester</p>
+       <h5>Input your semester</h5>
 
        <label>
-           <input type="text" ID="sem" name="sem">
+           <input type="text" ID="sem" name="sem"  placeholder="Add Integer Value" required>
        </label>
 
 
@@ -91,10 +132,54 @@
             <br>
         <input type="submit" value="Submit">
         </form>
+        <p style="color:#7a7a7a;" class="text-left small">Go back to dashboard! <a style="color: #7a7a7a" href="/accounts/dashboard"><b>Back</b></a></p>
     </div>
 
 
 
+
+
+
+<footer class="content" style="margin-left: 180px; margin-top: 200px">
+    <div class="container py-5">
+      <div class="row py-4">
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
+          <p class="font-italic text-muted">SMS allows educational institutions to monitor,
+visualize, and analyze the efficiency of education with ease.</p>
+{#          <ul class="list-inline mt-4">#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>#}
+{#          </ul>#}
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">REQUIRED TECHNOLOGIES</h6>
+          <ul class="list-unstyled mb-0" >
+            <li class="mb-2"><a  class="text-muted">HTML</a></li>
+            <li class="mb-2"><a  class="text-muted">CSS</a></li>
+            <li class="mb-2"><a  class="text-muted">Django</a></li>
+            <li class="mb-2"><a  class="text-muted">Sqlite</a></li>
+            <li class="mb-2"><a  class="text-muted">Javascript</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">SHORTCUTS</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="/accounts/login" class="text-muted">Login</a></li>
+            <li class="mb-2"><a href="/accounts/register" class="text-muted">Register</a></li>
+            <li class="mb-2"><a href="https://github.com/anand-ctrl/Student_Monitoring_System.git" class="text-muted">Github Repo</a></li>
+            <li class="mb-2"><a href="/admin" class="text-muted">Admin</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">FEEDBACK</h6>
+            <p class="text-muted mb-4">Please click <a href="/accounts/feedback">here</a> to provide us your feedback!</p>
+          </div>
+        </div>
+      </div>
+  </footer>
 </body>
 
 </html>

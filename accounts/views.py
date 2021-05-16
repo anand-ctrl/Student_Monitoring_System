@@ -95,7 +95,20 @@ def dashboard(request):
         global_arr = list(global_map.keys())
         global_arr.reverse()
 
-        return render(request, 'dashboard.html', {'subject': global_arr[:4]})
+        if Student_Report.objects.filter(student_id=user_id).exists():
+            all_data = Student_Report.objects.filter(student_id=user_id).values().get()
+            all_subjects_scores = all_data['subject_marks']
+            # import pdb
+            # pdb.set_trace()
+            temp_sub = {}
+            list_data = list(all_data['subject_marks'].keys())
+            for i in list_data:
+                temp_sub.update(all_subjects_scores[i])
+            return render(request, 'dashboard.html', {'subject': global_arr[:4], 'subject_scores': temp_sub})
+        else:
+            return render(request, 'dashboard.html', {'subject': global_arr[:4]})
+
+
     else:
         return render(request, 'dashboard.html')
 
@@ -179,6 +192,101 @@ def academics(request):
         # calculate semester marks
         semester_marks = {sem: int(subject_marks_info[0]) + int(subject_marks_info[1]) + int(subject_marks_info[2]) + \
                                int(subject_marks_info[3])}
+
+        least_interested_sub = []
+        for i in subject_marks:
+            if subject_marks[i] < 55:
+                least_interested_sub.append(i)
+
+        sub_sug_arr = suggested_subject.objects.filter(student_id=user_id).values().get()['suggested_subjects'][
+            'suggested_subjects']
+
+        common_least_int_sub = []
+        least_interested_sub_set = set(least_interested_sub)
+        sub_sug_arr_set = set(sub_sug_arr)
+
+        if len(least_interested_sub_set.intersection(sub_sug_arr_set)) > 0:
+            common_least_int_sub.append(least_interested_sub_set.intersection(sub_sug_arr_set))
+
+        new_common_Sub = []
+
+        for i in least_interested_sub_set:
+            new_common_Sub.append(i)
+
+        sub_tags = []
+
+        student_data = student_score.objects.filter(student_id=user_id).values()[0]
+        del student_data['id']
+        del student_data['student_id']
+
+        for ele in list(student_data):
+            if student_data[ele] == False:
+                student_data.pop(ele)
+
+        student_data_arr = list(student_data)
+        student_data_set = set(student_data_arr)
+
+        for i in range(len(new_common_Sub)):
+            sub_id = list(subject_dict.keys())[list(subject_dict.values()).index(new_common_Sub[i])]
+            sub_data = subject.objects.filter(id=sub_id).values()[0]
+            del sub_data['id']
+            del sub_data['subject_name']
+            all_keys = list(student_data.keys())
+            subject_data_arr = []
+            for ele in all_keys:
+                if sub_data[ele]:
+                    subject_data_arr.append(ele)
+            subject_data_arr_set = set(subject_data_arr)
+            if len(student_data_set.intersection(subject_data_arr_set)) > 0:
+                student_data_set = student_data_set.intersection(subject_data_arr_set)
+
+        for i in student_data_set:
+            sub_tags.append(i)
+
+        final_student_tag = student_score.objects.filter(student_id=user_id).values()[0]
+
+        for i in sub_tags:
+            for j in list(final_student_tag):
+                if i == j:
+                    final_student_tag[j] = False
+
+        organised = final_student_tag['organised']
+        stubborn = final_student_tag['stubborn']
+        introvert = final_student_tag['introvert']
+        extrovert = final_student_tag['extrovert']
+        agreeable = final_student_tag['agreeable']
+        passive = final_student_tag['passive']
+        creative = final_student_tag['creative']
+        unpredictable = final_student_tag['unpredictable']
+        neurotic = final_student_tag['neurotic']
+        regularity = final_student_tag['regularity']
+        efficiency = final_student_tag['efficiency']
+        teamwork = final_student_tag['teamwork']
+        memory = final_student_tag['memory']
+        psa = final_student_tag['psa']
+        business = final_student_tag['business']
+        management = final_student_tag['management']
+        technical = final_student_tag['technical']
+        entrepreneur = final_student_tag['entrepreneur']
+        versatility = final_student_tag['versatility']
+        space = final_student_tag['space']
+        path_finding = final_student_tag['path_finding']
+        data_handling = final_student_tag['data_handling']
+
+        student_score.objects.filter(student_id=user_id).update(organised=organised, stubborn=stubborn,
+                                                                introvert=introvert,
+                                                                extrovert=extrovert, agreeable=agreeable,
+                                                                passive=passive,
+                                                                creative=creative, unpredictable=unpredictable,
+                                                                neurotic=neurotic,
+                                                                regularity=regularity, efficiency=efficiency,
+                                                                teamwork=teamwork,
+                                                                memory=memory, psa=psa, business=business,
+                                                                management=management,
+                                                                technical=technical, entrepreneur=entrepreneur,
+                                                                versatility=versatility, space=space,
+                                                                path_finding=path_finding,
+                                                                data_handling=data_handling)
 
         if not Student_Report.objects.filter(student_id=user_id).exists():
             student = Student_Report.objects.create(student_id=user_id, subject_marks={sem: subject_marks},
