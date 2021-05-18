@@ -29,6 +29,7 @@ class subject(models.Model):
     path_finding = models.BooleanField(default=False)
     space = models.BooleanField(default=False)
     data_handling = models.BooleanField(default=False)
+    career = models.CharField(max_length=50, default='IT')
 
 
 class suggested_subject(models.Model):

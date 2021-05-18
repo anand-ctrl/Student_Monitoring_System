@@ -6,7 +6,7 @@ from subjects.models import subject, suggested_subject
 
 class SubjectAdmin(admin.ModelAdmin):
     list_display = (
-        "subject_name", "organised", "stubborn", "introvert", "extrovert", "agreeable", "passive", "creative",
+        "subject_name", "career", "organised", "stubborn", "introvert", "extrovert", "agreeable", "passive", "creative",
         "unpredictable", "neurotic", "versatility", "regularity", "efficiency", "teamwork", "teamwork", "psa",
         "business",
         "management",

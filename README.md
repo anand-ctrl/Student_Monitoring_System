@@ -21,7 +21,7 @@ electives related to their field of interest. Eg. In the US education system, st
 to decide their major after completing 2 years of graduation. Here, our project can play a
 big role in suggesting major related courses.<br/>
 
-* It helps our CDGC for screening students for specific profiles.<br/>
+* It helps our CDGC(Carrier Development & Guidance Centre) for screening students for specific profiles.<br/>
 
 * Also, students can target specific companies (which will be suggested by our app).<br/>
 
@@ -49,4 +49,4 @@ for making suggestions and increasing employability projection of students.<br /
 2. CSS
 3. Bootstrap
 4. Django
-5. Sqlite
+5. Sqlite/PostgreSQL
