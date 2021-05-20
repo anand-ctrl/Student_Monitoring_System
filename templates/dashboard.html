@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <title>DashBoard</title>
         <link rel="icon" href="{% static 'images/batman.png' %}">
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -29,13 +28,13 @@
 #dtVerticalScrollExample
 {
   position:absolute;
-  top:120px;
+  top:290px;
   right:10px;
 }
 .acad
 {
     position:absolute;
-  top:90px;
+  top:250px;
   right:104px;
 }
 #interest
@@ -71,10 +70,19 @@
     padding: 4px;
 }
 
-#dash
+#pie
 {
-    {#background-color: #b8daff;#}
+    {#border-style: groove;#}
+
+    border-width: thin;
+    padding: 8px;
+    background-color: #EBE8E3;
+    box-shadow: 10px 10px 5px #D3D0CC;
+
 }
+
+
+
 
 </style>
 
@@ -203,7 +211,7 @@
 <div>
     {% if subject %}
         <br>
-        <h6>Here is the list of suggested subjects based on your Initial Test/ Academic Performance:</h6>
+        <p style="font-size: 20px"><b>List of suggested subjects based on your Initial Test/ Academic Performance:</b></p>
 {#        <ol type="1">#}
 {#        {% for i in subject %}#}
 {##}
@@ -267,8 +275,8 @@
     </table>
 </div>
     {% if interest_result %}
-        <h4><b>Your suggested career path based on Academic Records:</b></h4>
-        <h5 id="interest"> {{ interest_result }}</h5>
+        <p style="font-size: 20px"><b>Suggested career path based on Academic Records:</b></p>
+        <p style="font-size: 20px" id="interest"> {{ interest_result }}</p>
 
 
         {% endif %}
@@ -276,12 +284,12 @@
         {% if final_performance %}
             <br>
             <br>
-            <h4><b>Based on your academic performance your:</b></h4>
+            <p style="font-size: 20px"><b>Based on your academic performance your:</b></p>
             {% if final_performance == 1 %}
 
-                <h5 id="decline">Performance Declined!</h5>
+                <p style="font-size: 20px" id="decline">Performance Declined!</p>
                 {% else %}
-                <h5 id="improve">Performance Improved!</h5>
+                <p style="font-size: 20px" id="improve">Performance Improved!</p>
                 {% endif %}
             {% endif %}
 
@@ -289,11 +297,20 @@
 
     {% endif %}
 
+<br>
+<br>
+{% if data %}
+<p style="font-size: 20px"><b>Success % in different career path: </b></p>
+<div id="pie" style="width: 60%">
+<canvas id="myChart" ></canvas>
+</div>
+{% endif %}
 
 
 
-    <footer class="content" id="dash" style="margin-left: 180px; margin-top: 200px">
-    <div class="container py-5">
+    <footer class="bg-white text-center text-dark" id="dash" style="margin-left: 180px; margin-top: 200px">
+{#    <footer class="content" id="dash" style="margin-left: 180px; margin-top: 200px">#}
+    <div class="text-center p-3" >
       <div class="row py-4">
         <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
           <p class="font-italic text-muted">SMS allows educational institutions to monitor,
@@ -339,9 +356,48 @@ visualize, and analyze the efficiency of education with ease.</p>
 
 
 
+
 </body>
 
 <script>
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: {{ label|safe }},
+        datasets: [{
+            label: '# of Votes',
+            data: {{ data|safe }},
+            backgroundColor: [
+                {#'rgba(255, 99, 132, 0.2)',#}
+                {#'rgba(54, 162, 235, 0.2)',#}
+                {#'rgba(255, 206, 86, 0.2)',#}
+                {#'rgba(75, 192, 192, 0.2)',#}
+                {#'rgba(153, 102, 255, 0.2)',#}
+                {#'rgba(255, 159, 64, 0.2)'#}
+                '#003f5c',
+                '#665191',
+                '#d45087',
+                '#ff7c43',
+                '#ffa600'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+       responsive:true
+    }
+});
 
     $( document ).ready(function() {
     console.log( "ready!" );

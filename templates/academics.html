@@ -15,6 +15,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
+    body
+    {
+        background-color: #E3DFDE;
+    }
+ .inform
+ {
+     display: block;
+     background-color: white;
+     margin-left: 170px;
+     border: 4px;
+     box-shadow: 10px 10px 5px #93908F;
+ }
+
 
 </style>
 </head>
@@ -47,13 +60,21 @@
 
   </div>
 </nav>
+
 {% if user.is_authenticated %}
+
         <div class="container" style="float: left; padding-top: 90px" >
-    <h2>Hi {{ user.first_name }}, fill your Academics Details:</h2>
+    <h1><b>Academics Section</b></h1>
+    <br>
+    <h5>Hi {{ user.first_name }}, fill your Academics Details:</h5>
             {% endif %}
 
   <div id="myDIV" style="align-content: center;" >
 
+  <br>
+
+
+  <div class="inform" style="text-align: center">
    <form action="{% url 'academics' %}" method="post">
         {% csrf_token %}
 
@@ -101,6 +122,7 @@
   <input type="text" id="fname" name="fname"><br>
 
             <select id="your_role" name="your_role" required>
+                <option selected>Choose...</option>
                     <option value="1">Network Theory</option>
                      <option value="2">Data Structure & Algorithms</option>
                      <option value="3">Ethics</option>
@@ -115,6 +137,7 @@
   <input type="text" id="fname" name="fname"><br>
 
             <select id="your_role" name="your_role" required>
+                <option selected>Choose...</option>
                      <option value="1">Network Theory</option>
                      <option value="2">Data Structure & Algorithms</option>
                      <option value="3">Ethics</option>
@@ -128,10 +151,13 @@
 
   <input type="text" id="fname" name="fname"><br>
             <br>
-        <input type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Submit">
         </form>
+
+
         <p style="color:#7a7a7a;" class="text-left small">Go back to dashboard! <a style="color: #7a7a7a" href="/accounts/dashboard"><b>Back</b></a></p>
     </div>
+      </div>
 
 
 
@@ -178,6 +204,7 @@ visualize, and analyze the efficiency of education with ease.</p>
         </div>
       </div>
   </footer>
+</div>
 </body>
 
 </html>

@@ -157,15 +157,15 @@ def dashboard(request):
                         architecture += sub_for_interest[i]
 
                 if it_counter:
-                    it /= it_counter
+                    it //= it_counter
                 if finance_counter:
-                    finance /= finance_counter
+                    finance //= finance_counter
                 if higher_studies_counter:
-                    higher_studies /= higher_studies_counter
+                    higher_studies //= higher_studies_counter
                 if architecture_counter:
-                    architecture /= architecture_counter
+                    architecture //= architecture_counter
                 if management_counter:
-                    management /= management_counter
+                    management //= management_counter
 
                 res = max(it, finance, higher_studies, architecture, management)
 
@@ -174,7 +174,7 @@ def dashboard(request):
                 if management == res:
                     field_of_int = "Management"
                 elif it == res:
-                    field_of_int = "IT"
+                    field_of_int = "Information Technology"
                 elif finance == res:
                     field_of_int = "Finance"
                 elif architecture == res:
@@ -205,18 +205,23 @@ def dashboard(request):
                 elif high is True:
                     final_performance = 2
 
+                label = ['Management', 'IT', 'Finance', 'Architecture', 'Higher Studies']
+                data = [management, it, finance, architecture, higher_studies]
+
                 if len(global_arr) < 4:
                     my_string = {'suggested_subjects': global_arr}
                     suggested_subject.objects.filter(student_id=user_id).update(suggested_subjects=my_string)
                     return render(request, 'dashboard.html', {'subject': global_arr, 'subject_scores': temp_sub,
                                                               'interest_result': field_of_int,
-                                                              'final_performance': final_performance})
+                                                              'final_performance': final_performance, 'label': label,
+                                                              'data': data})
 
                 my_string = {'suggested_subjects': global_arr[:4]}
                 suggested_subject.objects.filter(student_id=user_id).update(suggested_subjects=my_string)
                 return render(request, 'dashboard.html',
                               {'subject': global_arr[:4], 'subject_scores': temp_sub, 'interest_result': field_of_int,
-                               'final_performance': final_performance})
+                               'final_performance': final_performance, 'label': label,
+                               'data': data})
             else:
                 if len(global_arr) < 4:
                     return render(request, 'dashboard.html', {'subject': global_arr})
