@@ -1,0 +1,1 @@
+web: gunicorn Student_Monitoring_System.wsgi
