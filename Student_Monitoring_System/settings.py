@@ -83,11 +83,14 @@ WSGI_APPLICATION = 'Student_Monitoring_System.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dfn87ni4n2dek8',
+        'HOST': 'ec2-34-206-8-52.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'krglirleufphdz',
+        'PASSWORD': '6f0f046307ad33d7a565e7ac3b9768be1074d47565935bcad5426acb4b1ec27e'
     }
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
