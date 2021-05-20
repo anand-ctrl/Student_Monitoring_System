@@ -8,8 +8,8 @@ class test(models.Model):
     question = models.CharField(max_length=500)
     option1 = models.CharField(max_length=200)
     option2 = models.CharField(max_length=200)
-    option3 = models.CharField(max_length=200, null=True)
-    option4 = models.CharField(max_length=200, null=True)
+    option3 = models.CharField(max_length=200, null=True, blank=True)
+    option4 = models.CharField(max_length=200, null=True, blank=True)
 
 
 class student_score(models.Model):
