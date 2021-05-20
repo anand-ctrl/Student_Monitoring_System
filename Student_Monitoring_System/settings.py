@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'x*^1f2c@sks&*8p2qyq7gcd3i+s%xl7xa$^v)mfokho7$ci49x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['pacific-caverns-55569.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['student-monitoring-system-ai.herokuapp.com', '127.0.0.1']
 
 # Application definition
 
