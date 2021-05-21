@@ -50,3 +50,7 @@ for making suggestions and increasing employability projection of students.<br /
 3. Bootstrap
 4. Django
 5. Sqlite/PostgreSQL
+
+### Website:
+   https://student-monitoring-system-ai.herokuapp.com/
+   
