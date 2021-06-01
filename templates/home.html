@@ -4,7 +4,288 @@
 
 <html lang="en">
 <head>
+    <meta charset="UTF-8">{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'images/batman.png' %}">
+    <title>Home</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/jumbotron.css' %}" rel="stylesheet">
+    <link href="{% static 'css/temp.css' %}" rel="stylesheet">
+
+    <style>
+        .carousel-item
+        {
+            height: 500px;
+            background: black;
+        }
+        .carousel-item img
+        {
+            position: absolute;
+            object-fit: cover;
+            height: 100% !important;
+
+            opacity: 40%;
+        }
+        #carHead
+        {
+            color: white; padding-left: 50px; padding-top: 50px;
+            font-size: 70px;
+            font-family: "Brush Script MT";
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+        <a href="/"><img src="{% static 'images/batman.png' %}" width="50" height="50" style="margin-left: 30px"></a>
+        <h3 style="font-family: 'Brush Script MT'; margin-left: 30px ; color: #fff3cd">S.M.S</h3>
+
+        <a title="Github Link" href="https://github.com/anand-ctrl/Student_Monitoring_System.git" style="margin-left: 1100px"><img src="{% static 'images/github.png' %}" height="30" width="30"></a>
+{#      <div class="collapse navbar-collapse" id="navbarsExampleDefault">#}
+{#        <ul class="navbar-nav mr-auto">#}
+{#          <li class="nav-item active">#}
+{#            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link" href="#">Link</a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link disabled" href="#">Disabled</a>#}
+{#          </li>#}
+{#          <li class="nav-item dropdown">#}
+{#            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>#}
+{#            <div class="dropdown-menu" aria-labelledby="dropdown01">#}
+{#              <a class="dropdown-item" href="#">Action</a>#}
+{#              <a class="dropdown-item" href="#">Another action</a>#}
+{#              <a class="dropdown-item" href="#">Something else here</a>#}
+{#            </div>#}
+{#          </li>#}
+{#        </ul>#}
+{#        <form class="form-inline my-2 my-lg-0">#}
+{#          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">#}
+{#          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
+{#        </form>#}
+{#      </div>#}
+    </nav>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+
+
+      <img class="d-block w-100" src="{% static 'images/demo1.jpg' %}" alt="First slide">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+            <h1 id="carHead" >Student Monitoring System!</h1>
+        </div>
+            <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <br>
+            <br>
+            <br>
+            <ul style="color: white; margin-left: 90px; margin-top: 50px">
+                <li><h5>Suggest and evaluate the effective teaching methodologies.</h5></li>
+                <br>
+                <li><h5>Helps educational institutions regularly perform tracking of dozens <br> of indicators  related to the academic performance of their students.</h5></li>
+            <br>
+                <li><h5>Helps in analyzing complex nature of modern education.</h5></li>
+        </ul>
+
+        </div>
+        </div>
+{#        <div class="carousel-caption d-none d-md-block">#}
+{#    <h5>Hi there</h5>#}
+{#    <p>Demo</p>#}
+{#  </div>#}
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="https://i.kym-cdn.com/entries/icons/original/000/032/965/making-of-a-2d-animation-for-chilledcow-20180706052709.jpg" alt="Second slide">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+            <h1 id="carHead" >Academic Profiling Made Easy</h1>
+        </div>
+            <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <br>
+            <br>
+            <br>
+            <ul style="color: white; margin-left: 90px; margin-top: 50px">
+                <li><h5>Track your performance based on academic records.</h5></li>
+                <br>
+                <li><h5>Get comparative results.</h5></li>
+            <br>
+                <li><h5>Helps in providing quantitative analysis of your performance.</h5></li>
+        </ul>
+
+        </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'images/demo3.jpg' %}" alt="Third slide">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+            <h1 id="carHead" >Customized Suggestions for you!</h1>
+        </div>
+            <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <br>
+            <br>
+            <br>
+            <ul style="color: white; margin-left: 90px; margin-top: 50px">
+                <li><h5>Get list of suggested subjects based on how you perform in <br> your cognitive test.</h5></li>
+                <br>
+                <li><h5>Suggests best career path for you.</h5></li>
+            <br>
+                <li><h5>Quantitative profiling of different career paths.</h5></li>
+        </ul>
+
+        </div>
+        </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{#    <main role="main">#}
+{#        <!-- Main jumbotron for a primary marketing message or call to action -->#}
+{#      <div class="jumbotron">#}
+{#        <div class="container">#}
+{#          <h1 class="display-3">Student Monitoring System!</h1>#}
+{#          <p>To suggest and evaluate the effective teaching methodologies, educational institutions should regularly perform tracking of dozens of indicators related to the academic performance of their students. Considering the complex nature of modern education, it’s barely possible to complete such a task manually. Fortunately, assessment apps allow educational institutions to monitor, visualize, and analyze the efficiency of education with ease. An approach based on data tracking and analysis helps to define if there’s the need to change the used studying programs for making better decisions and achieving better academic results. In addition to academic performance the co-curriculars and volunteer work performed by students must also be taken into consideration to get a more comprehensive assessment of potential employability and opportunities. All this added with interests displayed by students and their commitment to them can give a better evaluation than standard methods.</p>#}
+{#          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>#}
+{#        </div>#}
+{#      </div>#}
+
+{#       <div class="container">#}
+{#        <!-- Example row of columns -->#}
+{#        <div class="row">#}
+{#          <div class="col-md-4">#}
+{#            <h2>Heading</h2>#}
+{#            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>#}
+{#            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>#}
+{#          </div>#}
+{#          <div class="col-md-4">#}
+{#            <h2>Heading</h2>#}
+{#            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>#}
+{#            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>#}
+{#          </div>#}
+{#          <div class="col-md-4">#}
+{#            <h2>Heading</h2>#}
+{#            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>#}
+{#            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>#}
+{#          </div>#}
+{#        </div>#}
+{##}
+{#        <hr>#}
+{##}
+{#      </div> <!-- /container -->#}
+
+{#    </main>#}
+
+{#    <footer class="container">#}
+{#      <p>&copy; Company 2017-2018</p>#}
+{#    </footer> #}
+
+
+
+
+<div style="padding: 30px">
+    <div style="text-align:center">
+    <a class="btn btn-primary btn-lg" href="/accounts/register" role="button">Register &raquo;</a>
+    <a style="margin-left: 10px" class="btn btn-primary btn-lg" href="/accounts/login" role="button">Login &raquo;</a>
+    </div>
+</div>
+
+
+
+{#    footer#}
+{#<div class="content">#}
+{#  <p>Thanks for visiting us!</p>#}
+{#    #}
+{#</div>#}
+<footer class="bg-light" >
+    <div class="container py-5">
+      <div class="row py-4">
+        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" class="mb-3">
+          <p class="font-italic text-muted">SMS allows educational institutions to monitor,
+visualize, and analyze the efficiency of education with ease.</p>
+{#          <ul class="list-inline mt-4">#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>#}
+{#            <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>#}
+{#          </ul>#}
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">REQUIRED TECHNOLOGIES</h6>
+          <ul class="list-unstyled mb-0" >
+            <li class="mb-2"><a  class="text-muted">HTML</a></li>
+            <li class="mb-2"><a  class="text-muted">CSS</a></li>
+            <li class="mb-2"><a  class="text-muted">Django</a></li>
+            <li class="mb-2"><a  class="text-muted">Sqlite</a></li>
+            <li class="mb-2"><a  class="text-muted">Javascript</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">SHORTCUTS</h6>
+          <ul class="list-unstyled mb-0">
+            <li class="mb-2"><a href="/accounts/login" class="text-muted">Login</a></li>
+            <li class="mb-2"><a href="/accounts/register" class="text-muted">Register</a></li>
+            <li class="mb-2"><a href="https://github.com/anand-ctrl/Student_Monitoring_System.git" class="text-muted">Github Repo</a></li>
+            <li class="mb-2"><a href="/admin" class="text-muted">Admin</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-lg-0">
+          <h6 class="text-uppercase font-weight-bold mb-4">FEEDBACK</h6>
+            <p class="text-muted mb-4">Please click <a href="/accounts/feedback">here</a> to provide us your feedback!</p>
+          </div>
+        </div>
+      </div>
+  </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'js/jquery-slim.min.js' %} "><\/script>')</script>
+     <script src="{% static 'js/popper.min.js' %}"></script>
+     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+
+
+</body>
+</html>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
